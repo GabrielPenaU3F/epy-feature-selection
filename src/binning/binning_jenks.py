@@ -1,9 +1,8 @@
 import pandas as pd
 
-from matplotlib import pyplot as plt
-from src.binning_utils import fisher_jenks_breaks, calculate_number_of_bins, cut_data_in_column
+from src.binning.binning_utils import fisher_jenks_breaks, calculate_number_of_bins, cut_data_in_column
 
-dataset = pd.read_csv('resources/data/dataset.csv')
+dataset = pd.read_csv('../../resources/data/dataset.csv')
 
 norm_peaks = dataset['peak_magnitude_norm'].values
 
@@ -34,4 +33,4 @@ plt.hist(dataset['bins_scott'], bins=n_scott)
 plt.show()
 '''
 
-dataset.to_csv('resources/data/dataset_binned.csv')
+dataset.to_csv('../../resources/data/dataset_binned.csv', sep=',', encoding='utf-8', index=False)
