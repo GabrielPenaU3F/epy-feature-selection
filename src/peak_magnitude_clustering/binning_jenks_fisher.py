@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.binning.binning_utils import fisher_jenks_breaks, calculate_number_of_bins, cut_data_in_column
+from src.peak_magnitude_clustering.binning_utils import fisher_jenks_breaks, calculate_number_of_bins, cut_data_in_column
 
 dataset = pd.read_csv('../../resources/data/dataset.csv')
 

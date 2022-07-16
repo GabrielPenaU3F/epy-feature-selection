@@ -1,6 +1,6 @@
 import pandas as pd
 
-from src.binning.binning_utils import cut_dataset_into_clusters
+from src.peak_magnitude_clustering.binning_utils import cut_dataset_into_clusters
 
 dataset = pd.read_csv('../../resources/data/dataset_binned_v4.csv')
 

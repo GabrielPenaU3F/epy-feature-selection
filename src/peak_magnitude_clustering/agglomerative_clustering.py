@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.cluster import AgglomerativeClustering
 
-from src.binning.binning_utils import calculate_number_of_bins
+from src.peak_magnitude_clustering.binning_utils import calculate_number_of_bins
 
 dataset = pd.read_csv('../../resources/data/dataset_binned.csv')
 
