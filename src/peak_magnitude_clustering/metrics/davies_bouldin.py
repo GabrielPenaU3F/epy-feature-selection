@@ -2,7 +2,7 @@ import pandas as pd
 
 from sklearn import metrics
 
-dataset = pd.read_csv('../../../resources/data/dataset_binned_v4.csv')
+dataset = pd.read_csv('../../../resources/data/dataset_clustered_v4.csv')
 
 norm_peaks = dataset['peak_magnitude_norm'].values.reshape(-1, 1)
 km_clusters = dataset['cluster_fd_km'].values

@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-dataset = pd.read_csv('../../resources/data/dataset_binned_v2.csv')
+dataset = pd.read_csv('../../resources/data/dataset_clustered_v2.csv')
 
 new_n_pico = np.array([])
 for loc in dataset['location'].unique():
