@@ -18,4 +18,4 @@ imputed_dataset = pd.DataFrame(imputer.fit_transform(numerical_df), columns=nume
 imputed_dataset.insert(loc=0, column='location', value=location_col)
 
 # Always updated to the last output version
-imputed_dataset.to_csv('../resources/data/dataset_v2/peak_magnitude_output_imputed.csv', sep=',', encoding='utf-8', index=False)
+imputed_dataset.to_csv('../resources/data/dataset_v2/dataset_2.3.csv', sep=',', encoding='utf-8', index=False)
