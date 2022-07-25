@@ -1,7 +1,8 @@
 import pandas as pd
 from sklearn.impute import KNNImputer
 
-dataset = pd.read_csv('../resources/data/dataset_v1/dataset_1.5.csv')
+# Always updated to the last version
+dataset = pd.read_csv('../resources/data/dataset_v2/dataset_2.2.csv')
 
 # Fill the vaccination columns with zeros
 dataset['vaccination_1_dose'] = dataset['vaccination_1_dose'].fillna(0)
@@ -16,4 +17,5 @@ imputer = KNNImputer(n_neighbors=3, weights="uniform")
 imputed_dataset = pd.DataFrame(imputer.fit_transform(numerical_df), columns=numerical_df.columns)
 imputed_dataset.insert(loc=0, column='location', value=location_col)
 
-imputed_dataset.to_csv('../resources/data/peak_magnitude_output_imputed.csv', sep=',', encoding='utf-8', index=False)
+# Always updated to the last output version
+imputed_dataset.to_csv('../resources/data/dataset_v2/peak_magnitude_output_imputed.csv', sep=',', encoding='utf-8', index=False)
