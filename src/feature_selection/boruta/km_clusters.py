@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.model_selection import train_test_split, cross_val_score
 
-data = pd.read_csv('../../../resources/data/peak_magnitude_output_imputed.csv')
+data = pd.read_csv('../../../resources/data/dataset_v1/dataset_1.6.csv')
 
 nonentry_cols = ['location', 'n_peak', 'peak_magnitude_norm', 'cluster_fd_km', 'cluster_fd_agg', 'cluster_fd_jenks',
                  'cluster_sturges_jenks', 'cluster_scott_jenks']
@@ -23,7 +23,7 @@ forest = forest.fit(X_train, y_train)
 y_pred = forest.predict(X_test)
 
 # define Boruta feature selection method
-feat_selector = BorutaPy(forest, n_estimators='auto', random_state=1)
+feat_selector = BorutaPy(forest, n_estimators='auto', random_state=1, perc=70)
 # find all relevant features
 feat_selector.fit(np.array(X_train), np.array(y_train))
 
@@ -54,7 +54,7 @@ forest = forest.fit(X_filtered, y_train)
 y_pred = forest.predict(X_test_filtered)
 
 crossval_score = cross_val_score(forest, X_filtered, y_train, cv=5).mean()
-acc = metrics.accuracy_score(y_test, y_pred)
+acc = metrics.accuracy_score(y_test, y_pred) * 100
 print('---Results--- \n')
 print('Accuracy on test set: {accuracy:.2f}%'.format(accuracy=acc))
 print('Out-of-bag error: {oob:.4f}'.format(oob=forest.oob_score_))
@@ -71,11 +71,12 @@ for i, score in enumerate(importance_mdi_value):
     f_score = 100 * score
     print('{feature}: {percent:.2f}%'.format(feature=name, percent=f_score))
 
-fig, axes = plt.subplots(2, 1)
-importance_mdi.plot.bar(ax=axes[0])
-axes[0].set_title('Feature importance (MDI)')
-importance_fpermut.plot.bar(ax=axes[1], yerr=importante_fpermut_value.importances_std)
-axes[1].set_title('Feature importance (feature permutation)')
-fig.tight_layout()
-plt.show()
-
+fig, ax = plt.subplots(figsize=(12, 8))
+fig.set_tight_layout(True)
+importance_mdi.plot.bar(ax=ax)
+ax.set_title('Feature importance (MDI)')
+fig.savefig('../../../resources/results/boruta_km_importance_mdi.pdf')
+ax.clear()
+importance_fpermut.plot.bar(ax=ax, yerr=importante_fpermut_value.importances_std)
+ax.set_title('Feature importance (feature permutation)')
+fig.savefig('../../../resources/results/boruta_km_importance_permutation.pdf')

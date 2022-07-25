@@ -8,9 +8,7 @@ from sklearn.tree import DecisionTreeClassifier, export_graphviz
 
 data = pd.read_csv('../../../resources/data/dataset_v1/dataset_1.6.csv')
 
-nonentry_cols = ['location', 'n_peak', 'peak_magnitude_norm', 'cluster_fd_km', 'cluster_fd_agg', 'cluster_fd_jenks',
-                 'cluster_sturges_jenks', 'cluster_scott_jenks']
-X = data.loc[:, ~data.columns.isin(nonentry_cols)]
+X = data.loc[:, data.columns.isin(['median_age', 'aged_65_older', 'female_smokers', 'extreme_poverty', 'life_expectancy'])]
 
 y_fd_jenks = data['cluster_fd_jenks'].values
 
@@ -25,7 +23,7 @@ dot_data = export_graphviz(tree, out_file=None,
                            feature_names=X.columns, class_names=True
                            )
 graph = graphviz.Source(dot_data)
-graph.render('../../../resources/results/fd_jenks_tree')
+graph.render('../../../resources/results/fd_jenks_5ft_tree')
 
 acc = metrics.accuracy_score(y_test, y_pred) * 100
 print('---Results--- \n')
@@ -42,5 +40,4 @@ fig.set_tight_layout(True)
 ax.bar(X.columns.values, importance)
 ax.set_title('Feature importance (MDI)')
 ax.tick_params(axis='x', labelrotation=90)
-fig.savefig('../../../resources/results/ctree_jenks_importance_mdi.pdf')
-
+fig.savefig('../../../resources/results/ctree_jenks_5ft_importance_mdi.pdf')

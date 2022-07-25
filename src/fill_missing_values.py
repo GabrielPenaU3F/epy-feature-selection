@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.impute import KNNImputer
 
-dataset = pd.read_csv('../resources/data/dataset_clustered_v5.csv')
+dataset = pd.read_csv('../resources/data/dataset_v1/dataset_1.5.csv')
 
 # Fill the vaccination columns with zeros
 dataset['vaccination_1_dose'] = dataset['vaccination_1_dose'].fillna(0)
