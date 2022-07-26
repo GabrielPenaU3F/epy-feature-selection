@@ -1,9 +1,9 @@
 import pandas as pd
 from sklearn.cluster import KMeans
 
-from src.peak_magnitude_clustering.binning_utils import calculate_number_of_bins
+from src.peak_magnitude_clustering.experiment_1.binning_utils import calculate_number_of_bins
 
-dataset = pd.read_csv('../../resources/data/dataset_v1/dataset_1.3.csv')
+dataset = pd.read_csv('../../../resources/data/dataset_v1/dataset_1.3.csv')
 
 norm_peaks = dataset['peak_magnitude_norm'].values
 n_freedman = calculate_number_of_bins(norm_peaks, method='fd')

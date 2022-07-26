@@ -10,7 +10,7 @@ import pandas as pd
 from sklearn.cluster import AgglomerativeClustering, KMeans
 from sklearn.preprocessing import KBinsDiscretizer
 
-from src.peak_magnitude_clustering.binning_utils import calculate_number_of_bins, fisher_jenks_breaks, \
+from src.peak_magnitude_clustering.experiment_1.binning_utils import calculate_number_of_bins, fisher_jenks_breaks, \
     cut_data_in_column
 
 dataset = pd.read_csv('../../../resources/data/dataset_v2/dataset_2.1.csv')

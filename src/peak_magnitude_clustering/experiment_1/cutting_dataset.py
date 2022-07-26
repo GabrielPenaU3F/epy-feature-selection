@@ -1,8 +1,8 @@
 import pandas as pd
 
-from src.peak_magnitude_clustering.binning_utils import cut_dataset_into_clusters
+from src.peak_magnitude_clustering.experiment_1.binning_utils import cut_dataset_into_clusters
 
-dataset = pd.read_csv('../../resources/data/dataset_v1/dataset_1.4.csv')
+dataset = pd.read_csv('../../../resources/data/dataset_v1/dataset_1.4.csv')
 
 fd_km_clustered = cut_dataset_into_clusters(dataset, 'cluster_fd_km')
 fd_agg_clustered = cut_dataset_into_clusters(dataset, 'cluster_fd_agg')

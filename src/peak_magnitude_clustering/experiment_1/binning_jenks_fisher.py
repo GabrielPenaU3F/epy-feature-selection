@@ -1,8 +1,8 @@
 import pandas as pd
 
-from src.peak_magnitude_clustering.binning_utils import fisher_jenks_breaks, calculate_number_of_bins, cut_data_in_column
+from src.peak_magnitude_clustering.experiment_1.binning_utils import fisher_jenks_breaks, calculate_number_of_bins, cut_data_in_column
 
-dataset = pd.read_csv('../../resources/data/dataset_v1/dataset_1.0.csv')
+dataset = pd.read_csv('../../../resources/data/dataset_v1/dataset_1.0.csv')
 
 norm_peaks = dataset['peak_magnitude_norm'].values
 
