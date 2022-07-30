@@ -13,7 +13,7 @@ from sklearn.preprocessing import KBinsDiscretizer
 from src.experiment_1.binning_utils import calculate_number_of_bins, fisher_jenks_breaks, \
     cut_data_in_column
 
-dataset = pd.read_csv('../../../resources/data/dataset_v2/dataset_2.1.csv')
+dataset = pd.read_csv('../../../../resources/data/cases/dataset_v2/dataset_2.1.csv')
 norm_peaks = dataset['peak_magnitude_norm'].to_numpy()
 
 # Obtaining the number of classes

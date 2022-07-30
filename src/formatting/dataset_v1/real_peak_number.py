@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-dataset = pd.read_csv('../../../resources/data/dataset_v1/dataset_1.2.csv')
+dataset = pd.read_csv('../../../resources/data/cases/dataset_v1/dataset_1.2.csv')
 
 new_n_pico = np.array([])
 for loc in dataset['location'].unique():

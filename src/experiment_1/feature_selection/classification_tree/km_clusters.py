@@ -6,7 +6,7 @@ from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 
-data = pd.read_csv('../../../../resources/data/dataset_v1/dataset_1.6.csv')
+data = pd.read_csv('../../../../resources/data/cases/dataset_v1/dataset_1.6.csv')
 
 nonentry_cols = ['location', 'n_peak', 'peak_magnitude_norm', 'cluster_fd_km', 'cluster_fd_agg', 'cluster_fd_jenks', 'cluster_sturges_jenks', 'cluster_scott_jenks']
 X = data.loc[:, ~data.columns.isin(nonentry_cols)]

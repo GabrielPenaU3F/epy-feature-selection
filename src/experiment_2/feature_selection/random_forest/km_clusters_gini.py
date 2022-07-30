@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.model_selection import train_test_split, cross_val_score
 
-data = pd.read_csv('../../../../resources/data/dataset_v2/dataset_2.3.csv')
+data = pd.read_csv('../../../../resources/data/cases/dataset_v2/dataset_2.3.csv')
 
 nonentry_cols = ['location', 'n_peak', 'peak_magnitude_norm', 'fd_km_clusters', 'fd_agg_clusters', 'fd_jenks_clusters',
                  'sturges_jenks_clusters', 'scott_jenks_clusters', 'fd_uniform_clusters']
