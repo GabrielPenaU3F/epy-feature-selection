@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.model_selection import train_test_split, cross_val_score
 
-data = pd.read_csv('../../../../resources/data/cases/dataset_v2/dataset_2.3.csv')
+data = pd.read_csv('../../../../../resources/data/deaths/dataset_deaths_2.3.csv')
 
 nonentry_cols = ['location', 'n_peak', 'peak_magnitude_norm', 'fd_km_clusters', 'fd_agg_clusters', 'fd_jenks_clusters',
                  'sturges_jenks_clusters', 'scott_jenks_clusters', 'fd_uniform_clusters']
@@ -48,8 +48,8 @@ fig, ax = plt.subplots(figsize=(12, 8))
 fig.set_tight_layout(True)
 importance_mdi.plot.bar(ax=ax)
 ax.set_title('Feature importance (MDI)')
-fig.savefig('../../../../resources/results/experiment_2/forest_fd_km_gini_importance_mdi.pdf')
+fig.savefig('../../../../../resources/results/experiment_2/deaths/forest_fd_km_gini_importance_mdi.pdf')
 ax.clear()
 importance_fpermut.plot.bar(ax=ax, yerr=importance_fpermut_value.importances_std)
 ax.set_title('Feature importance (feature permutation)')
-fig.savefig('../../../../resources/results/experiment_2/forest_fd_km_gini_importance_permutation.pdf')
+fig.savefig('../../../../../resources/results/experiment_2/deaths/forest_fd_km_gini_importance_permutation.pdf')

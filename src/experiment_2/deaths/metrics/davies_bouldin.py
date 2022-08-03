@@ -2,7 +2,7 @@ import pandas as pd
 
 from sklearn import metrics
 
-dataset = pd.read_csv('../../../resources/data/cases/dataset_v2/dataset_2.3.csv')
+dataset = pd.read_csv('../../../../resources/data/deaths/dataset_deaths_2.3.csv')
 
 norm_peaks = dataset['peak_magnitude_norm'].values.reshape(-1, 1)
 fd_jenks_clusters = dataset['fd_jenks_clusters'].to_numpy()

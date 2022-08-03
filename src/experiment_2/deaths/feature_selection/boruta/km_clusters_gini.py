@@ -7,16 +7,16 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.model_selection import train_test_split, cross_val_score
 
-data = pd.read_csv('../../../../resources/data/cases/dataset_v2/dataset_2.3.csv')
+data = pd.read_csv('../../../../../resources/data/deaths/dataset_deaths_2.3.csv')
 
 nonentry_cols = ['location', 'n_peak', 'peak_magnitude_norm', 'fd_km_clusters', 'fd_agg_clusters', 'fd_jenks_clusters',
                  'sturges_jenks_clusters', 'scott_jenks_clusters', 'fd_uniform_clusters']
 X = data.loc[:, ~data.columns.isin(nonentry_cols)]
 
-y_jenks = data['fd_jenks_clusters'].values
+y_km = data['fd_km_clusters'].values
 
 # K-Means clusters
-X_train, X_test, y_train, y_test = train_test_split(X, y_jenks, test_size=0.1, random_state=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y_km, test_size=0.1, random_state=1)
 forest = RandomForestClassifier(n_estimators=30, max_samples=0.8, max_features=0.7, criterion='gini',
                                 min_samples_split=5, min_samples_leaf=3, oob_score=True)
 forest = forest.fit(X_train, y_train)
@@ -81,8 +81,8 @@ fig, ax = plt.subplots(figsize=(12, 8))
 fig.set_tight_layout(True)
 importance_mdi.plot.bar(ax=ax)
 ax.set_title('Feature importance (MDI)')
-fig.savefig('../../../../resources/results/experiment_2/boruta_fd_jenks_gini_importance_mdi.pdf')
+fig.savefig('../../../../../resources/results/experiment_2/deaths/boruta_km_gini_importance_mdi.pdf')
 ax.clear()
 importance_fpermut.plot.bar(ax=ax, yerr=importance_fpermut_value.importances_std)
 ax.set_title('Feature importance (feature permutation)')
-fig.savefig('../../../../resources/results/experiment_2/boruta_fd_jenks_gini_importance_permutation.pdf')
+fig.savefig('../../../../../resources/results/experiment_2/deaths/boruta_km_gini_importance_permutation.pdf')
