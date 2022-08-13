@@ -135,3 +135,7 @@ dmypy.json
 # LibreOffice Calc
 .~*
 /practice/
+
+# Result files
+*.png
+*.pdf
